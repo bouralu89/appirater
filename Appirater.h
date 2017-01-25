@@ -88,7 +88,7 @@ extern NSString *const kAppiraterReminderRequestDate;
 @interface Appirater : NSObject <UIAlertViewDelegate, SKStoreProductViewControllerDelegate> {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-	UIAlertView		*ratingAlert;
+    UIAlertView		*ratingAlert;
 #pragma clang diagnostic pop
 }
 
@@ -162,7 +162,7 @@ extern NSString *const kAppiraterReminderRequestDate;
  Tells Appirater to show the prompt (a rating alert).
  Similar to tryToShowPrompt, but without checks (the prompt is always displayed).
  Passing false will hide the rate later button on the prompt.
-  
+ 
  The only case where you should call this is if your app has an
  explicit "Rate this app" command somewhere. This is similar to rateApp,
  but instead of jumping to the review directly, an intermediary prompt is displayed.
@@ -173,7 +173,7 @@ extern NSString *const kAppiraterReminderRequestDate;
  Tells Appirater to open the App Store page where the user can specify a
  rating for the app. Also records the fact that this has happened, so the
  user won't be prompted again to rate the app.
-
+ 
  The only case where you should call this directly is if your app has an
  explicit "Rate this app" command somewhere.  In all other cases, don't worry
  about calling this -- instead, just call the other functions listed above,
@@ -184,19 +184,19 @@ extern NSString *const kAppiraterReminderRequestDate;
 
 /*!
  Tells Appirater to immediately close any open rating modals (e.g. StoreKit rating VCs).
-*/
+ */
 + (void)closeModal;
 
 /*!
  Asks Appirater if the user has declined to rate;
-*/
+ */
 - (BOOL)userHasDeclinedToRate;
 
 /*!
  Asks Appirater if the user has rated the current version.
- Note that this is not a guarantee that the user has actually rated the app in the 
- app store, but they've just clicked the rate button on the Appirater dialog. 
-*/
+ Note that this is not a guarantee that the user has actually rated the app in the
+ app store, but they've just clicked the rate button on the Appirater dialog.
+ */
 - (BOOL)userHasRatedCurrentVersion;
 
 @end
@@ -272,6 +272,12 @@ extern NSString *const kAppiraterReminderRequestDate;
  */
 + (void) setCustomAlertRateLaterButtonTitle:(NSString *)rateLaterTitle;
 
+/*
+ Set whether or not to use action=write-review query parameter in product URL to
+ automatically open write review page in the App Store
+ */
++ (void) setUsesWriteReviewAction:(BOOL)usesWriteReviewAction;
+
 /*!
  'YES' will show the Appirater alert everytime. Useful for testing how your message
  looks and making sure the link to your app's review page works.
@@ -310,7 +316,7 @@ extern NSString *const kAppiraterReminderRequestDate;
 
 /*!
  The bundle localized strings will be loaded from.
-*/
+ */
 +(NSBundle *)bundle;
 
 @end
@@ -323,7 +329,7 @@ extern NSString *const kAppiraterReminderRequestDate;
  
  Calls [Appirater appLaunched:YES]. See appLaunched: for details of functionality.
  */
-+ (void)appLaunched __attribute__((deprecated)); 
++ (void)appLaunched __attribute__((deprecated));
 
 /*!
  DEPRECATED: While still functional, it's better to use
